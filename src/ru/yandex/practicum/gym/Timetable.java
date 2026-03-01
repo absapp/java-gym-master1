@@ -52,8 +52,7 @@ public class Timetable {
 
         if (daySchedule == null) {
             return null;
-        }
-        else  {
+        } else  {
             return Collections.unmodifiableList(daySchedule.get(timeOfDay));
         }
     }
