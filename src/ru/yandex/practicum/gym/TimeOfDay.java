@@ -46,5 +46,4 @@ public class TimeOfDay implements Comparable<TimeOfDay> {
         return  hours * 60 + minutes;
     }
 }
-//
->>>>>>> 6638f9d (разобраться как работает git)
+
