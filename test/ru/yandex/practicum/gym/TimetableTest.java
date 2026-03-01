@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
->>>>>>> 6638f9d (разобраться как работает git)
+
 public class TimetableTest {
 
     @Test
@@ -31,7 +31,7 @@ public class TimetableTest {
         assertEquals(1, mondayTrainingSession.size());
         //Проверить, что за вторник не вернулось занятий
         assertNull(timetable.getTrainingSessionsForDay(DayOfWeek.TUESDAY));
->>>>>>> 6638f9d (разобраться как работает git)
+
     }
 
     @Test
@@ -72,7 +72,7 @@ public class TimetableTest {
 
         // Проверить, что за вторник не вернулось занятий
         assertNull(timetable.getTrainingSessionsForDay(DayOfWeek.TUESDAY));
->>>>>>> 6638f9d (разобраться как работает git)
+
     }
 
     @Test
@@ -216,5 +216,5 @@ public class TimetableTest {
         assertEquals(3, counters.get(0).getCount());
         assertEquals(coach, counters.get(0).getCoach());
     }
->>>>>>> 6638f9d (разобраться как работает git)
+
 }

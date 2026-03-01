@@ -82,5 +82,5 @@ public class Timetable {
         return Collections.unmodifiableList(counterOfTrainingsList);
     }
 }
-//
->>>>>>> 6638f9d (разобраться как работает git)
+
+
