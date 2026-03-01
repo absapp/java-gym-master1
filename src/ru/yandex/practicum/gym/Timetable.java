@@ -82,5 +82,3 @@ public class Timetable {
         return Collections.unmodifiableList(counterOfTrainingsList);
     }
 }
-
-
