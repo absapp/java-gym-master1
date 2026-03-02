@@ -4,12 +4,8 @@ import java.util.*;
 
 public class Timetable {
 
-
-    private LinkedHashMap<DayOfWeek, TreeMap<TimeOfDay, ArrayList<TrainingSession>>> timetable;
-
-    public Timetable() {
-        timetable = new LinkedHashMap<>();
-    }
+    private final LinkedHashMap<DayOfWeek, TreeMap<TimeOfDay, ArrayList<TrainingSession>>> timetable =
+            new LinkedHashMap<>();
 
     public void addNewTrainingSession(TrainingSession trainingSession) {
         //сохраняем занятие в расписании
@@ -25,22 +21,20 @@ public class Timetable {
         if (daySchedule == null) {
             daySchedule = new TreeMap<>();
             trainings = new ArrayList<>();
-            trainings.add(trainingSession);
             daySchedule.put(timeOfDay, trainings);
             timetable.put(dayOfWeek, daySchedule);
         } else {
             trainings = daySchedule.getOrDefault(timeOfDay, new ArrayList<>());
-            trainings.add(trainingSession);
             daySchedule.put(timeOfDay, trainings);
         }
-
+        trainings.add(trainingSession);
     }
 
     public Map<TimeOfDay, ArrayList<TrainingSession>> getTrainingSessionsForDay(DayOfWeek dayOfWeek) {
         //как реализовать, тоже непонятно, но сложность должна быть О(1)
         TreeMap<TimeOfDay, ArrayList<TrainingSession>> schedule = timetable.get(dayOfWeek);
         if (schedule == null) {
-            return null;
+            return Collections.emptySortedMap();
         } else {
             return Collections.unmodifiableSortedMap(schedule);
         }
@@ -51,7 +45,7 @@ public class Timetable {
         TreeMap<TimeOfDay, ArrayList<TrainingSession>> daySchedule = timetable.get(dayOfWeek);
 
         if (daySchedule == null) {
-            return null;
+            return Collections.emptyList();
         } else  {
             return Collections.unmodifiableList(daySchedule.get(timeOfDay));
         }
@@ -76,7 +70,6 @@ public class Timetable {
         for (var entry : coaches.entrySet()) {
             counterOfTrainingsList.add(new CounterOfTrainings(entry.getValue(), entry.getKey()));
         }
-
         Collections.sort(counterOfTrainingsList);
         return Collections.unmodifiableList(counterOfTrainingsList);
     }

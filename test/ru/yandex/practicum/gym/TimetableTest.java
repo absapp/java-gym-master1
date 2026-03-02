@@ -7,6 +7,7 @@ import java.util.*;
 
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -30,7 +31,7 @@ public class TimetableTest {
         //Проверить, что за понедельник вернулось одно занятие
         assertEquals(1, mondayTrainingSession.size());
         //Проверить, что за вторник не вернулось занятий
-        assertNull(timetable.getTrainingSessionsForDay(DayOfWeek.TUESDAY));
+        assertTrue(timetable.getTrainingSessionsForDay(DayOfWeek.TUESDAY).isEmpty());
 
     }
 
@@ -59,7 +60,6 @@ public class TimetableTest {
         timetable.addNewTrainingSession(saturdayChildTrainingSession);
 
         // Проверить, что за понедельник вернулось одно занятие
-
         assertEquals(1, timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY).size());
         // Проверить, что за четверг вернулось два занятия в правильном порядке: сначала в 13:00, потом в 20:00
         int[] expectedTime = {780, 1200};
@@ -71,7 +71,7 @@ public class TimetableTest {
         }
 
         // Проверить, что за вторник не вернулось занятий
-        assertNull(timetable.getTrainingSessionsForDay(DayOfWeek.TUESDAY));
+        assertTrue(timetable.getTrainingSessionsForDay(DayOfWeek.TUESDAY).isEmpty());
 
     }
 
@@ -94,7 +94,7 @@ public class TimetableTest {
         //Проверить, что за понедельник в 13:00 вернулось одно занятие
         assertEquals(1,  trainingSessionsOnMonday.size());
         //Проверить, что за понедельник в 14:00 не вернулось занятий
-        assertNull(trainingSessionsOnTuesday);
+        assertTrue(trainingSessionsOnTuesday.isEmpty());
     }
     @Test
     void testBoundaryTimeValues() {
@@ -189,7 +189,7 @@ public class TimetableTest {
         assertEquals(2, counters.get(1).getCount());
         assertEquals(1, counters.get(2).getCount());
 
-        // Проверяем, что тренеры соответствуют...
+        // Проверяем, что тренеры соответствуют
         assertEquals(coach1, counters.get(0).getCoach());
         assertEquals(coach2, counters.get(1).getCoach());
         assertEquals(coach3, counters.get(2).getCoach());
