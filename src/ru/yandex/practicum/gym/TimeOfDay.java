@@ -40,4 +40,10 @@ public class TimeOfDay implements Comparable<TimeOfDay> {
     public int getMinutes() {
         return minutes;
     }
+
+
+    public int toMinutes() {
+        return  hours * 60 + minutes;
+    }
 }
+
